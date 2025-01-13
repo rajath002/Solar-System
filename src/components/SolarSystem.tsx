@@ -8,7 +8,7 @@ export function SolarSystem() {
     <Canvas camera={{ position: [0, 20, 35], fov: 60 }}>
       <color attach="background" args={['#000010']} />
       <ambientLight intensity={0.3} />
-      <pointLight positioman={[0, 0, 0]} intensity={1500} color="#ffd700" />
+      <pointLight position={[0, 0, 0]} intensity={1500} color="#ffd700" />
       
       <Sun />
 

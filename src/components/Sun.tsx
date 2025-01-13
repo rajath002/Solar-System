@@ -4,8 +4,8 @@ import { Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 
 export function Sun() {
-  const materialRef = useRef<THREE.ShaderMaterial>();
-  const glowRef = useRef<THREE.Mesh>();
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+  const glowRef = useRef<THREE.Mesh>(null);
   
   const sunShader = {
     uniforms: {
