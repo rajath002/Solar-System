@@ -9,8 +9,17 @@ import uranusImgTexture from "../assets/textures/uranusmap.jpg";
 import neptuneImgTexture from "../assets/textures/neptunemap.jpg";
 import { Comet } from './Comet';
 
+function DisplayName() {
+  return (
+    <div className='absolute bottom-10 right-10 text-white text-2xl opacity-50'>
+     By Rajath
+    </div>
+  );
+}
+
 export function SolarSystem() {
   return (
+    <>
     <Canvas camera={{ position: [0, 20, 35], fov: 60 }} shadows>
       {/* <color attach="background" args={['#000010']} /> */}
       {/* blue background color */}
@@ -175,5 +184,7 @@ export function SolarSystem() {
         rotateSpeed={0.4}
       />
     </Canvas>
+      <DisplayName />
+    </>
   );
 }
