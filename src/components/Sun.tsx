@@ -93,7 +93,7 @@ export function Sun() {
 
   return (
     <group>
-      <Sphere args={[2.5, 64, 64]}>
+      <Sphere args={[2.5, 64, 64]} receiveShadow>
         <shaderMaterial
           ref={materialRef}
           args={[sunShader]}
@@ -102,7 +102,7 @@ export function Sun() {
         />
       </Sphere>
       
-      <Sphere ref={glowRef} args={[3.0, 32, 32]}>
+      <Sphere ref={glowRef} args={[3.0, 32, 32]} receiveShadow>
         <shaderMaterial
           args={[glowShader]}
           transparent

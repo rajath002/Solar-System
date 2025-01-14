@@ -11,6 +11,8 @@ interface PlanetProps {
   orbitSpeed: number;
   textureUrl?: string;
   name?: string;
+  castShadow?: boolean;
+  receiveShadow?: boolean;
   rings?: {
     innerRadius: number;
     outerRadius: number;
@@ -45,7 +47,7 @@ export function Planet({ position, size, color, orbitRadius, orbitSpeed, texture
 
   return (
     <>
-      <Sphere ref={meshRef} position={position} args={[size, 32, 32]}>
+      <Sphere ref={meshRef} position={position} args={[size, 32, 32]} castShadow receiveShadow>
         <meshPhysicalMaterial
           color={color}
           metalness={0.1}
@@ -65,6 +67,7 @@ export function Planet({ position, size, color, orbitRadius, orbitSpeed, texture
             0,
             Math.sin(orbitAngle.current) * orbitRadius
           ]}
+          receiveShadow
         >
           <meshPhysicalMaterial
             color={rings.color}

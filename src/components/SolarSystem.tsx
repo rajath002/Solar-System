@@ -5,12 +5,12 @@ import { Sun } from './Sun';
 
 export function SolarSystem() {
   return (
-    <Canvas camera={{ position: [0, 20, 35], fov: 60 }}>
+    <Canvas camera={{ position: [0, 20, 35], fov: 60 }} shadows>
       {/* <color attach="background" args={['#000010']} /> */}
       {/* blue background color */}
       <color attach="background" args={['#020930']} />
       <ambientLight intensity={0.3} />
-      <pointLight position={[0, 0, 0]} intensity={1500} color="#ffd700" />
+      <pointLight position={[0, 0, 0]} intensity={1500} color="#ffd700" castShadow/>
       
       <Sun />
 
@@ -23,6 +23,8 @@ export function SolarSystem() {
         orbitRadius={4}
         orbitSpeed={1.607}
         textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/7/5/75acb3ebf6cc25845fa52981eadfb4a1f91d61b7.jpeg"
+        castShadow
+        receiveShadow
       />
       {/* Venus */}
       <Planet
@@ -33,6 +35,8 @@ export function SolarSystem() {
         orbitRadius={7}
         orbitSpeed={1.174}
         textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/5/1/510b0bdc3aa89ae91ab91718cec0c01f41798082.jpeg"
+        castShadow
+        receiveShadow
       />
       {/* Earth */}
       <Planet
@@ -44,6 +48,8 @@ export function SolarSystem() {
         orbitSpeed={1}
         // textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg"
         textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/5/1/51d3b482c420866efdfd64f6abafc3917a0f86d3.jpeg"
+        castShadow
+        receiveShadow
       />
       {/* Mars */}
       <Planet
@@ -55,6 +61,8 @@ export function SolarSystem() {
         orbitSpeed={0.802}
         textureUrl='https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/7/7/77793f9bc2e9e1c1274b929cf2b7121191e25138.jpeg'
         // textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/mars_1k_color.jpg"
+        castShadow
+        receiveShadow
       />
       {/* Jupiter */}
       <Planet
@@ -65,6 +73,8 @@ export function SolarSystem() {
         orbitRadius={17}
         orbitSpeed={0.434}
         textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/2/8/28e78a1aa1594ffd8e0f746729c09418bec5d9cf.jpeg"
+        castShadow
+        receiveShadow
       />
       {/* Saturn */}
       <Planet
@@ -80,6 +90,8 @@ export function SolarSystem() {
           color: "#d4af37"
         }}
         textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/6/8/6802b3e1a008f462fdbcab65f682e50a6e64ac16.jpeg"
+        castShadow
+        receiveShadow
       />
       {/* Uranus */}
       <Planet
@@ -90,6 +102,8 @@ export function SolarSystem() {
         orbitRadius={25}
         orbitSpeed={0.228}
         textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/uranus_1k.jpg"
+        castShadow
+        receiveShadow
       />
       {/* Neptune */}
       <Planet
@@ -100,6 +114,8 @@ export function SolarSystem() {
         orbitRadius={28}
         orbitSpeed={0.182}
         textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/neptune_1k.jpg"
+        castShadow
+        receiveShadow
       />
 
       {/* Pluto */}
@@ -111,6 +127,8 @@ export function SolarSystem() {
         orbitRadius={32}
         orbitSpeed={0.159}
         textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/8/7/8779a5ac9a3d7c9c5bc281e45dd51906ad564d2f.jpeg"
+        castShadow
+        receiveShadow
       />
 
       <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
