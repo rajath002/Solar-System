@@ -13,6 +13,7 @@ interface PlanetProps {
   name?: string;
   castShadow?: boolean;
   receiveShadow?: boolean;
+  tilt?: boolean;
   rings?: {
     innerRadius: number;
     outerRadius: number;
@@ -20,17 +21,19 @@ interface PlanetProps {
   };
 }
 
-export function Planet({ position, size, color, orbitRadius, orbitSpeed, textureUrl, rings }: PlanetProps) {
+export function Planet({ position, size, color, orbitRadius, orbitSpeed, textureUrl, rings, tilt }: PlanetProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const orbitAngle = useRef(Math.random() * Math.PI * 2);
   const ringsRef = useRef<THREE.Mesh>(null);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (meshRef.current) {
       orbitAngle.current += orbitSpeed * delta;
       meshRef.current.position.x = Math.cos(orbitAngle.current) * orbitRadius;
       meshRef.current.position.z = Math.sin(orbitAngle.current) * orbitRadius;
       meshRef.current.rotation.y += delta * 0.5;
+
+      if (tilt) meshRef.current.rotation.x = Math.PI / 3;
 
       const newX = Math.cos(orbitAngle.current) * orbitRadius;
       const newZ = Math.sin(orbitAngle.current) * orbitRadius;
@@ -64,7 +67,7 @@ export function Planet({ position, size, color, orbitRadius, orbitSpeed, texture
           args={[rings.innerRadius, rings.outerRadius, 64]}
           position={[
             Math.cos(orbitAngle.current) * orbitRadius,
-            0,
+            position[1],
             Math.sin(orbitAngle.current) * orbitRadius
           ]}
           receiveShadow
