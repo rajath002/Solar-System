@@ -29,10 +29,10 @@ export function SolarSystem() {
         name="Venus"
         position={[0, 0, 0]}
         size={0.9}
-        color="#e3a372"
+        // color="#e3a372"
         orbitRadius={7}
         orbitSpeed={1.174}
-        textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/venus_surface.jpg"
+        textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/5/1/510b0bdc3aa89ae91ab91718cec0c01f41798082.jpeg"
       />
       {/* Earth */}
       <Planet
@@ -42,7 +42,8 @@ export function SolarSystem() {
         // color="#4287f5"
         orbitRadius={10}
         orbitSpeed={1}
-        textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg"
+        // textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg"
+        textureUrl="https://global.discourse-cdn.com/flex035/uploads/threejs/original/3X/5/1/51d3b482c420866efdfd64f6abafc3917a0f86d3.jpeg"
       />
       {/* Mars */}
       <Planet
