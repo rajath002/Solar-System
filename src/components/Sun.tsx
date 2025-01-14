@@ -3,6 +3,8 @@ import { useFrame } from '@react-three/fiber';
 import { Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 
+import sunTextureMap from "../assets/textures/sunmap.jpg";
+
 export function Sun() {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const glowRef = useRef<THREE.Mesh>(null);
@@ -93,16 +95,24 @@ export function Sun() {
 
   return (
     <group>
-      <Sphere args={[2.5, 64, 64]} receiveShadow>
-        <shaderMaterial
+      <Sphere args={[5.5, 64, 64]} receiveShadow>
+        {/* <shaderMaterial
           ref={materialRef}
           args={[sunShader]}
           transparent
           attach="material"
+        /> */}
+        <meshPhysicalMaterial
+          metalness={2.5}
+          roughness={5}
+          clearcoat={0.1}
+          clearcoatRoughness={1}
+          map={new THREE.TextureLoader().load(sunTextureMap)}
+          envMapIntensity={5}
         />
       </Sphere>
       
-      <Sphere ref={glowRef} args={[3.0, 32, 32]} receiveShadow>
+      <Sphere ref={glowRef} args={[6.0, 32, 32]} receiveShadow>
         <shaderMaterial
           args={[glowShader]}
           transparent
