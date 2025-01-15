@@ -84,6 +84,9 @@ export function Planet({ position, size, color, orbitRadius, orbitSpeed, texture
           map={textureUrl ? new THREE.TextureLoader().load(textureUrl) : undefined}
           envMapIntensity={1}
         />
+                {/* <Html position={[0, 6, 0]} center>
+                  <div style={{ color: 'red', fontSize: '1.5em' }}>{}</div>
+                </Html> */}
       </Sphere>
 
       {rings && (

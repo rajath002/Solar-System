@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Sphere } from '@react-three/drei';
 import * as THREE from 'three';
@@ -115,6 +115,9 @@ export function Sun() {
           map={new THREE.TextureLoader().load(sunTextureMap)}
           envMapIntensity={5}
         />
+        {/* <Html position={[0, 6, 0]} center>
+          <div style={{ color: 'red', fontSize: '1.5em' }}>Sun</div>
+        </Html> */}
       </Sphere>
       
       <Sphere ref={glowRef} args={[6.0, 32, 32]} receiveShadow>

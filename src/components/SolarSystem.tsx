@@ -25,7 +25,7 @@ export const SolarSystem: FC<Props> = (props = { showCreatorInfo: true }) => {
       <Canvas camera={{ position: [0, 20, 35], fov: 60 }} shadows>
         {/* <color attach="background" args={['#000010']} /> */}
         {/* blue background color */}
-        <color attach="background" args={['#020930']} />
+        {/* <color attach="background" args={['#020721']} /> */}
         {/* <ambientLight intensity={0.5} /> */}
         <pointLight
           position={[0, 0, 0]}
@@ -42,15 +42,17 @@ export const SolarSystem: FC<Props> = (props = { showCreatorInfo: true }) => {
           position={[0, 0, 0]}
         />
 
-        <Stars radius={100} depth={50} count={3500} factor={4} saturation={0} fade />
+        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
 
         <OrbitControls
           enableZoom={true}
           enablePan={true}
           enableRotate={true}
-          zoomSpeed={0.6}
+          zoomSpeed={0.5}
           panSpeed={0.5}
           rotateSpeed={0.4}
+          maxDistance={100}
+          minDistance={15}
         />
 
         {/* Comets */}
