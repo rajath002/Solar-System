@@ -1,3 +1,4 @@
+
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Sphere, Ring } from '@react-three/drei';
@@ -13,7 +14,7 @@ interface PlanetProps {
   name?: string;
   castShadow?: boolean;
   receiveShadow?: boolean;
-  tilt?: boolean;
+  tilt?: number;
   rings?: {
     innerRadius: number;
     outerRadius: number;
@@ -21,6 +22,27 @@ interface PlanetProps {
   };
 }
 
+/**
+ * Component representing a planet with optional rings in a 3D space.
+ *
+ * @param {PlanetProps} props - The properties for the Planet component.
+ * @param {[number, number, number]} props.position - The initial position of the planet.
+ * @param {number} props.size - The size of the planet.
+ * @param {string} [props.color] - The color of the planet.
+ * @param {number} props.orbitRadius - The radius of the planet's orbit.
+ * @param {number} props.orbitSpeed - The speed of the planet's orbit.
+ * @param {string} [props.textureUrl] - The URL of the texture to apply to the planet.
+ * @param {string} [props.name] - The name of the planet.
+ * @param {boolean} [props.castShadow] - Whether the planet casts a shadow.
+ * @param {boolean} [props.receiveShadow] - Whether the planet receives shadows.
+ * @param {number} [props.tilt] - The tilt of the planet.
+ * @param {Object} [props.rings] - The properties of the planet's rings.
+ * @param {number} props.rings.innerRadius - The inner radius of the rings.
+ * @param {number} props.rings.outerRadius - The outer radius of the rings.
+ * @param {string} props.rings.color - The color of the rings.
+ *
+ * @returns {JSX.Element} The rendered Planet component.
+ */
 export function Planet({ position, size, color, orbitRadius, orbitSpeed, textureUrl, rings, tilt }: PlanetProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const orbitAngle = useRef(Math.random() * Math.PI * 2);
@@ -33,7 +55,9 @@ export function Planet({ position, size, color, orbitRadius, orbitSpeed, texture
       meshRef.current.position.z = Math.sin(orbitAngle.current) * orbitRadius;
       meshRef.current.rotation.y += delta * 0.5;
 
-      if (tilt) meshRef.current.rotation.x = Math.PI / 3;
+      if (tilt)  {
+        meshRef.current.rotation.x = tilt;
+      }
 
       const newX = Math.cos(orbitAngle.current) * orbitRadius;
       const newZ = Math.sin(orbitAngle.current) * orbitRadius;
@@ -61,6 +85,7 @@ export function Planet({ position, size, color, orbitRadius, orbitSpeed, texture
           envMapIntensity={1}
         />
       </Sphere>
+
       {rings && (
         <Ring
           ref={ringsRef}

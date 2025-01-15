@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Sphere } from '@react-three/drei';
 import * as THREE from 'three';
@@ -8,6 +8,7 @@ import sunTextureMap from "../assets/textures/sunmap.jpg";
 export function Sun() {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const glowRef = useRef<THREE.Mesh>(null);
+  const sunRef = useRef<THREE.Mesh>(null); // Add reference for the sun mesh
   
   const sunShader = {
     uniforms: {
@@ -91,11 +92,15 @@ export function Sun() {
     if (glowRef.current) {
       (glowRef.current.material as THREE.ShaderMaterial).uniforms.time.value = state.clock.elapsedTime;
     }
+    if (sunRef.current) {
+      sunRef.current.rotation.y += 0.01; // Rotate the sun sphere
+      sunRef.current.rotation.x = THREE.MathUtils.degToRad(20); // Tilt the sun by 10 degrees
+    }
   });
 
   return (
     <group>
-      <Sphere args={[5.5, 64, 64]} receiveShadow>
+      <Sphere ref={sunRef} args={[5.5, 64, 64]}> {/* Add ref to the sun mesh */}
         {/* <shaderMaterial
           ref={materialRef}
           args={[sunShader]}
